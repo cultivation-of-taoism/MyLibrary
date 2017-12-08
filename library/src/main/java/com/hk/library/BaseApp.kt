@@ -5,6 +5,7 @@ import com.blankj.utilcode.util.Utils
 
 /**
  * Created by 23641 on 2017/9/29.
+ * 应用类
  */
 open class  BaseApp: Application() {
     override fun onCreate() {

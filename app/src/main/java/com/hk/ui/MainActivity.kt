@@ -3,15 +3,22 @@ package com.hk.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.hk.library.ui.BaseActivity
-
+import com.blankj.utilcode.util.ConvertUtils
 import com.hk.base.R
+import com.hk.library.ui.BaseActivity
+import com.hk.library.view.LoadProgressDialog.Companion.confing
 
 class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        confing.dimAmount = 0F
+        confing.width = ConvertUtils.dp2px(24f)
+        confing.isShowText = false
+        confing.textSize = 10f
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        loadProgressDialog.show()
+        loadProgressDialog.setMessage("1")
     }
 
     override fun onClick(v: View) {

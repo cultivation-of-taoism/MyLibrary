@@ -6,6 +6,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
+import kotlin.properties.Delegates
 
 /**
  * Created by 23641 on 2017/6/15.
