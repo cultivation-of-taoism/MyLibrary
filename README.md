@@ -1,4 +1,4 @@
-# MyLibrary
+/# MyLibrary
 自己写的mvp框架，工具类，自定义控件，以及某些第三方库的用法
 ## 使用方法
 tep 1. Add the JitPack repository to your build file 
@@ -12,7 +12,7 @@ Add it in your root build.gradle at the end of repositories:
 			...
 			maven { url 'https://jitpack.io' }
 		}
-}<code><pre>
+}</code></pre>
 Step 2. Add the dependency
 
 	dependencies {
