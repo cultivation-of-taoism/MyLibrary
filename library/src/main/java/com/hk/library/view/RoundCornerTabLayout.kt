@@ -7,8 +7,6 @@ import android.support.design.widget.TabLayout
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.hk.library.R
-import com.hk.library.R.attr.cornerRadius
-import com.hk.library.R.attr.dividerColor
 
 /**
  * Created by 23641 on 2017/9/28.
