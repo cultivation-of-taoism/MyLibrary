@@ -17,8 +17,8 @@ class MainActivity : BaseActivity() {
         confing.textSize = 10f
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        loadProgressDialog.show()
-        loadProgressDialog.setMessage("1")
+//        loadProgressDialog.show()
+//        loadProgressDialog.setMessage("1")
     }
 
     override fun onClick(v: View) {

@@ -5,7 +5,10 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.support.design.widget.TabLayout
 import android.util.AttributeSet
+import android.widget.LinearLayout
 import com.hk.library.R
+import com.hk.library.R.attr.cornerRadius
+import com.hk.library.R.attr.dividerColor
 
 /**
  * Created by 23641 on 2017/9/28.
@@ -35,6 +38,7 @@ class RoundCornerTabLayout:TabLayout {
     private var borderWith = 0f
     private var dividerColor = Color.TRANSPARENT
     private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val mDividerPoints = arrayListOf<Float>()
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         mRect = RectF(0f,0f,w.toFloat(),h.toFloat())
@@ -53,6 +57,20 @@ class RoundCornerTabLayout:TabLayout {
         setBackgroundDrawable(BitmapDrawable(resources,bgBitmap))
     }
 
+    override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        super.onLayout(changed, l, t, r, b)
+        if (tabCount<=1)return
+        mDividerPoints.clear()
+        val mTabStrip = getChildAt(0) as LinearLayout
+        for(i in 0 until tabCount-1){
+            val child = mTabStrip.getChildAt(i)
+            mDividerPoints.add(child.right.toFloat())
+            mDividerPoints.add(child.top.toFloat())
+            mDividerPoints.add(child.right.toFloat())
+            mDividerPoints.add(child.bottom.toFloat())
+        }
+    }
+
 
     override fun dispatchDraw(canvas: Canvas) {
         mPath.reset()
@@ -65,13 +83,10 @@ class RoundCornerTabLayout:TabLayout {
         canvas.restore()
     }
     private fun drawDivider(canvas: Canvas){
-        if (tabCount<=0)return
+        if (tabCount<=1)return
         mPaint.color = dividerColor
         mPaint.style = Paint.Style.FILL
         mPaint.strokeWidth = borderWith
-        val interval = width/tabCount.toFloat()
-        (1 until tabCount).forEach {
-            canvas.drawLine(it*interval,0f,it*interval,height.toFloat(),mPaint)
-        }
+        canvas.drawLines(mDividerPoints.toFloatArray(), mPaint)
     }
 }
