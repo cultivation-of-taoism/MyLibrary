@@ -1,4 +1,4 @@
-/# MyLibrary
+# MyLibrary
 自己写的mvp框架，工具类，自定义控件，以及某些第三方库的用法
 ## 使用方法
 tep 1. Add the JitPack repository to your build file 
