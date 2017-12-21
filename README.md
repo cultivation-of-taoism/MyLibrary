@@ -7,15 +7,26 @@ maven
 sbt
 leiningen
 Add it in your root build.gradle at the end of repositories:
-<pre><code>allprojects {
+
+	allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
-}</code></pre>
+	}
 Step 2. Add the dependency
 
 	dependencies {
 	        compile 'com.github.qq2364121253:MyLibrary:v1.1'
 	}
+## mvp框架
+先看一下view层的接口
 
+	interface IView {
+        	fun showSuccess(`object`: Any, task:Int)
+        	fun showError(error: String)
+        	fun showError(error: Any, task:Int)
+        	val mContext: Context
+        	var loadProgressDialog: LoadProgressDialog
+        	val contentView:View
+       }
