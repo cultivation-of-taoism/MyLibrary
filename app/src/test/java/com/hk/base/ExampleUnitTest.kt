@@ -15,10 +15,13 @@ class ExampleUnitTest {
     @Throws(Exception::class)
     fun addition_isCorrect() {
         data class Person(val age: Int)
-        var person: Person by NotNUllSingleVar()
-        person = Person(1)
-        System.out.println(person)
-        person = Person(2)
+
+        val getPerson: ()->Person = {
+            Person(1)
+        }
+        val person: Person by NotNUllSingleVar{
+            Person(1)
+        }
         System.out.println(person)
         assertEquals(4, (2 + 2).toLong())
     }

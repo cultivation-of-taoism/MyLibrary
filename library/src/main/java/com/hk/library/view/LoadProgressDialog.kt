@@ -42,7 +42,6 @@ class LoadProgressDialog(context: Context) {
         //关键在下面的两行,使用window.setContentView,替换整个对话框窗口的布局
         if (count < 0) return
         count++
-        LogUtils.v("对话框显示次数:$count")
         if (ad.isShowing) return
         try {
             if (isFirst) {
@@ -77,7 +76,6 @@ class LoadProgressDialog(context: Context) {
     }
     private fun updateWindow(){
         layoutProgress.measure(View.MeasureSpec.UNSPECIFIED,View.MeasureSpec.UNSPECIFIED)
-        LogUtils.v("width",layoutProgress.measuredWidth,"height",layoutProgress.measuredHeight)
         var size = if (layoutProgress.measuredWidth>layoutProgress.measuredHeight) layoutProgress
                 .measuredWidth
         else layoutProgress.measuredHeight
@@ -94,7 +92,6 @@ class LoadProgressDialog(context: Context) {
      */
     fun dismiss() {
         if (count > 0) count--
-        LogUtils.v("对话框显示次数：" + count)
         if (ad.isShowing && count == 0)
             ad.dismiss()
     }

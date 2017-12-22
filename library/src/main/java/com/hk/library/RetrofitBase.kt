@@ -40,7 +40,6 @@ class ApiException(val code:Int,message:String): RuntimeException(message){
 open class RetrofitErrorBase(private val iPresenter: IPresenter, private val task:Int = 0): Consumer<Throwable> {
     override fun accept(e: Throwable) {
         e.printStackTrace()
-        LogUtils.v("提示","错误类型:${e::class.java.name}\n错误原因:${e.localizedMessage}")
         when (e) {
             is HttpException -> iPresenter.onError("网络错误!\n错误码:${e.code()}",task)
             is IOException -> iPresenter.onError("连接失败!\n错误信息:${e.localizedMessage}",task)
