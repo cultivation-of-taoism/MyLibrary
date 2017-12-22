@@ -15,7 +15,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.qq2364121253:MyLibrary:v1.1'
+	        compile 'com.github.qq2364121253:MyLibrary:v1.1.2'
 	}
 ## mvp框架
 1. 先看一下view层的接口
