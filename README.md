@@ -1,9 +1,7 @@
 # MyLibrary
 自己写的mvp框架，工具类，自定义控件，以及某些第三方库的用法
 ## 使用方法
-step 1. Add the JitPack repository to your build file 
-gradle maven sbt leiningen
-
+step 1. Add the JitPack repository to your build file gradle ,
 Add it in your root build.gradle at the end of repositories:
 
 	allprojects {
