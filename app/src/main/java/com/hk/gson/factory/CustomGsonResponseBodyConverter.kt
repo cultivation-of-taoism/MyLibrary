@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.TypeAdapter
 import com.google.gson.reflect.TypeToken
 import com.hk.HKApp
-import com.hk.library.ApiException
+import com.hk.library.retrofit.ApiException
 import okhttp3.ResponseBody
 import okhttp3.internal.Util.UTF_8
 import retrofit2.Converter

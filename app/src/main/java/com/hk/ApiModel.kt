@@ -1,10 +1,9 @@
 package com.hk
 
 import com.google.gson.Gson
-import com.hk.ApiModel.Companion.service
 import com.hk.library.Model
-import com.hk.library.RetrofitBase
-import com.hk.library.RetrofitErrorBase
+import com.hk.library.retrofit.RetrofitBase
+import com.hk.library.retrofit.RetrofitErrorBase
 import com.hk.library.presenter.IPresenter
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -38,7 +37,7 @@ class ApiModel(val iPresenter:IPresenter): Model(iPresenter) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(Consumer{
                     it->iPresenter.onSuccess(it.data!!,Task.REGISTER_TOKEN)
-                }, RetrofitErrorBase(iPresenter,Task.REGISTER_TOKEN))
+                }, RetrofitErrorBase(iPresenter, Task.REGISTER_TOKEN))
     }
 
     object Task {

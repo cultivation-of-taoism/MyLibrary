@@ -1,6 +1,5 @@
-package com.hk.library
+package com.hk.library.retrofit
 
-import com.blankj.utilcode.util.LogUtils
 import com.hk.library.presenter.IPresenter
 import io.reactivex.functions.Consumer
 import okhttp3.OkHttpClient
