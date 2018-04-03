@@ -17,19 +17,17 @@ import java.util.concurrent.TimeUnit
  */
 class RetrofitBase {
     companion object{
+        val client = OkHttpClient.Builder()
+                .addInterceptor(HttpLoggingInterceptor()
+                        .setLevel(HttpLoggingInterceptor.Level.BODY))
+                .readTimeout(1,TimeUnit.MINUTES)
+                .writeTimeout(1,TimeUnit.MINUTES)
+                .connectTimeout(1,TimeUnit.MINUTES)
         val retrofitBuilder = Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 //.addConverterFactory(GsonConverterFactory.create())
-                .client(
-                        OkHttpClient.Builder()
-                                .addInterceptor(HttpLoggingInterceptor()
-                                        .setLevel(HttpLoggingInterceptor.Level.BODY))
-                                .readTimeout(1,TimeUnit.MINUTES)
-                                .writeTimeout(1,TimeUnit.MINUTES)
-                                .connectTimeout(1,TimeUnit.MINUTES)
-                                .build()
-                )
+                .client(client.build())
 
     }
 }
