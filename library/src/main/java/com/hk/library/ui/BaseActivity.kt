@@ -15,7 +15,7 @@ import kotlin.properties.Delegates
  */
 
 open class BaseActivity : AppCompatActivity(), IView, View.OnClickListener {
-    override val contentView: View
+    override val iiView: View
         get() = window.decorView
 
 
@@ -47,7 +47,7 @@ open class BaseActivity : AppCompatActivity(), IView, View.OnClickListener {
 
     override val mContext: Context = this
 
-    override var loadProgressDialog: LoadProgressDialog by Delegates.notNull()
+    override lateinit var loadProgressDialog: LoadProgressDialog
 
     override fun onClick(v: View) {}
     protected fun hideTitle() {
@@ -64,7 +64,7 @@ open class BaseActivity : AppCompatActivity(), IView, View.OnClickListener {
     companion object {
         var activityList: MutableList<Activity> = arrayListOf()
         var backPressTime = System.currentTimeMillis()
-        open fun closeAll(){
+        fun closeAll(){
             for (activity in activityList) {
                 activity.finish()
             }

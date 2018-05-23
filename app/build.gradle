@@ -22,29 +22,40 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile('com.hwangjr.rxbus:rxbus:+') {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation('com.hwangjr.rxbus:rxbus:+') {
         exclude group: 'io.reactivex'
         exclude group: 'com.jakewharton.timber'
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile project(':library')
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'org.litepal.android:core:+'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-v4:26.+'
-    compile 'com.android.support:design:26.+'
-    compile 'com.android.support:recyclerview-v7:26.+'
-    compile 'com.leo.gesturelibray:GestureLibray:1.1.1'
-    compile 'com.github.bumptech.glide:glide:4.2.0'
-    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-alpha-8'
-    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-alpha-8'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
-    testCompile 'junit:junit:4.12'
+    implementation project(':library')
+    implementation 'com.android.support:appcompat-v7:26.+'
+    implementation 'org.litepal.android:core:+'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:support-v4:26.+'
+    implementation 'com.android.support:design:26.+'
+    implementation 'com.android.support:recyclerview-v7:26.+'
+    implementation 'com.leo.gesturelibray:GestureLibray:1.1.1'
+    implementation 'com.github.bumptech.glide:glide:4.2.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-alpha-8'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-alpha-8'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation 'com.blankj:utilcode:+'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.just.agentweb:agentweb:4.0.2'
+    testImplementation 'junit:junit:4.12'
+
     kapt 'com.github.bumptech.glide:compiler:4.2.0'
 }
 repositories {

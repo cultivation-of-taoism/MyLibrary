@@ -1,4 +1,4 @@
-package rundi.investmentadviser.retrofit
+package com.hk.library.retrofit
 
 import com.hk.library.presenter.Presenter
 import com.hk.library.ui.IView
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by 23641 on 2017/10/19.
  */
-open class FilePresenter(view:IView): Presenter(view),ProgressListener {
+open class FilePresenter(view:IView): Presenter(view), ProgressListener {
     var hasWrittenLen = 0L
     var totalLen = 0L
     var hasFinish = false

@@ -13,9 +13,8 @@ import kotlin.properties.Delegates
  */
 
 open class BaseFragment : Fragment(), IView, View.OnClickListener {
-    override val contentView: View
-        get() = mView
     protected var mView: View by Delegates.notNull()
+    override val iiView: View by lazy { mView }
     protected var activity: BaseActivity by Delegates.notNull()
     override val mContext: Context
         get() = if (context==null)activity
@@ -30,7 +29,6 @@ open class BaseFragment : Fragment(), IView, View.OnClickListener {
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         activity = context as BaseActivity
-        loadProgressDialog = activity.loadProgressDialog
     }
 
     override fun showSuccess(`object`: Any, task: Int) {
@@ -46,5 +44,7 @@ open class BaseFragment : Fragment(), IView, View.OnClickListener {
         showError(error.toString())
     }
 
-    override var loadProgressDialog: LoadProgressDialog by Delegates.notNull()
+    override var loadProgressDialog: LoadProgressDialog
+    get() = activity.loadProgressDialog
+    set(value) = Unit
 }

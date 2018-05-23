@@ -9,6 +9,8 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.io.IOException
+import java.net.ConnectException
+import java.net.SocketTimeoutException
 import java.util.concurrent.TimeUnit
 
 
@@ -20,9 +22,9 @@ class RetrofitBase {
         val client = OkHttpClient.Builder()
                 .addInterceptor(HttpLoggingInterceptor()
                         .setLevel(HttpLoggingInterceptor.Level.BODY))
-                .readTimeout(1,TimeUnit.MINUTES)
-                .writeTimeout(1,TimeUnit.MINUTES)
-                .connectTimeout(1,TimeUnit.MINUTES)
+                .readTimeout(10,TimeUnit.SECONDS)
+                .writeTimeout(10,TimeUnit.SECONDS)
+                .connectTimeout(10,TimeUnit.SECONDS)
         val retrofitBuilder = Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
@@ -39,7 +41,10 @@ open class RetrofitErrorBase(private val iPresenter: IPresenter, private val tas
         e.printStackTrace()
         when (e) {
             is HttpException -> iPresenter.onError("网络错误!\n错误码:${e.code()}",task)
-            is IOException -> iPresenter.onError("连接失败!\n错误信息:${e.localizedMessage}",task)
+            is ConnectException -> iPresenter.onError("连接失败，网络不可用！", task)
+            is SocketTimeoutException -> iPresenter.onError("网络错误，连接超时！", task)
+            is IOException -> iPresenter.onError("连接失败!\n错误信息:${e.localizedMessage ?: "服务端无响应"}",
+                    task)
             is ApiException -> iPresenter.onError(e,task)
             else -> iPresenter.onError("错误类型:${e::class.java.name}\n错误信息:${e.localizedMessage}",task)
         }

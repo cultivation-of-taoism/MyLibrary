@@ -8,7 +8,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 import com.blankj.utilcode.util.ConvertUtils
-import com.blankj.utilcode.util.LogUtils
 import com.hk.library.R
 
 /**
@@ -33,8 +32,8 @@ class LoadProgressDialog(context: Context) {
     private var isFirst = true
     init {
         // TODO Auto-generated constructor stub
-        ad.setCanceledOnTouchOutside(false)
-        ad.setCancelable(false)
+        ad.setCanceledOnTouchOutside(confing.touchOutside)
+        ad.setCancelable(confing.cancelable)
         ad.window.setDimAmount(confing.dimAmount)
     }
 
@@ -101,6 +100,8 @@ class LoadProgressDialog(context: Context) {
                  var dimAmount: Float = 0.5f,//dialog背景透明度0~1
                  var isShowText:Boolean = true,//是否显示文字
                  var textColor: Int = Color.parseColor("#888888"),//文字颜色
-                 var textSize: Float = 12f//文字大小
+                 var textSize: Float = 12f,//文字大小
+                 var cancelable: Boolean = false,//按返回键能否关闭
+                 var touchOutside: Boolean = false//按弹窗外的地方能否关闭
     )
 }

@@ -1,4 +1,4 @@
-package rundi.investmentadviser.retrofit
+package com.hk.library.retrofit
 
 /**
  * Created by Administrator on 2017/1/16.

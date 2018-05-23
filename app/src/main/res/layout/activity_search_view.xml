@@ -16,7 +16,9 @@
         app:queryHint="请输入搜索内容"
         app:iconifiedByDefault="false"
         android:inputType="text"
-        android:imeOptions="actionSearch">
+        android:imeOptions="actionSearch"
+        app:searchIcon="@drawable/sousuo"
+        app:isShowSearchIcon="true">
 
     </com.hk.library.view.ExtendSearchView>
 

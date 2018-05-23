@@ -26,6 +26,9 @@ Int) :
         return itemView
     }
     private fun setTextStyle(textView: TextView){
+        if (textView.layoutParams == null)textView.layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT)
         val lp:ViewGroup.LayoutParams = textView.layoutParams as ViewGroup.LayoutParams
         lp.height = textHeight
         textView.layoutParams = lp

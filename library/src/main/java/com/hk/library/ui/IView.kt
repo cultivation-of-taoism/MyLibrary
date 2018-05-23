@@ -16,5 +16,5 @@ interface IView {
     fun showError(error: Any, task:Int)
     val mContext: Context
     var loadProgressDialog: LoadProgressDialog
-    val contentView:View
+    val iiView:View
 }

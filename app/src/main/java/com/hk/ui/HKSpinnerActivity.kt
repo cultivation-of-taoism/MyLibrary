@@ -11,6 +11,6 @@ class HKSpinnerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hkspinner)
-        spinner_hk.setData(arrayListOf("1","2","3"))
+        spinner_hk.setData(arrayListOf("1","222222222","3","1","222222222","3"))
     }
 }

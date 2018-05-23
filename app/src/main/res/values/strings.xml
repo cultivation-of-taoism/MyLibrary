@@ -6,4 +6,20 @@
         <item>测试三</item>
         <item>测试四</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragmentHello blank fragmentHello blank fragment
+    Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragment
+    Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragment
+    Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank\n
+        Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragment
+    Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragment
+    Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank\n
+        Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragment
+    Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragment
+    Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank\n
+        Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragment
+    Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragment
+    Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank\n
+    </string>
 </resources>

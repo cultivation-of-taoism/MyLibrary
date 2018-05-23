@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="44dp"
+    android:orientation="horizontal"
+    android:paddingBottom="1dp">
+    <TextView
+        android:layout_width="137dp"
+        style="@style/DealOrderText"
+        android:text="成交单号"/>
+    <TextView
+        android:layout_width="160dp"
+        style="@style/DealOrderText"
+        android:text="时间"/>
+    <TextView
+        android:layout_width="90dp"
+        style="@style/DealOrderText"
+        android:text="商品代码"/>
+    <TextView
+        android:layout_width="91dp"
+        style="@style/DealOrderText"
+        android:text="商品名称"/>
+    <TextView
+        android:layout_width="90dp"
+        style="@style/DealOrderText"
+        android:text="买卖"/>
+    <TextView
+        android:layout_width="90dp"
+        style="@style/DealOrderText"
+        android:text="成交价格"/>
+    <TextView
+        android:layout_width="90dp"
+        style="@style/DealOrderText"
+        android:text="数量"/>
+    <TextView
+        android:layout_width="90dp"
+        style="@style/DealOrderText"
+        android:text="成本价"/>
+    <TextView
+        android:layout_width="90dp"
+        style="@style/DealOrderText"
+        android:text="费用"/>
+</LinearLayout>

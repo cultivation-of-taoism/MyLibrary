@@ -4,9 +4,9 @@
         <attr name="android:textSize"/>
         <attr name="android:textColor"/>
         <attr name="android:layout_height"/>
-        <attr name="triangleColor" format="color"/>
-        <attr name="triangleMarginRight" format="dimension"/>
-        <attr name="triangleMarginVertical" format="dimension"/>
+        <attr name="arrowDrawable" format="reference"/>
+        <attr name="arrowPadding" format="dimension"/>
+        <attr name="arrowMarginVertical" format="dimension"/>
         <attr name="android:divider"/>
         <attr name="android:dividerHeight"/>
         <attr name="android:gravity"/>
@@ -28,6 +28,12 @@
         <attr name="civ_fill_color" format="color" />
     </declare-styleable>
     <declare-styleable name="SpinView">
-        <attr name="speed" format="float"></attr>
+        <attr name="speed" format="float"/>
+    </declare-styleable>
+    <declare-styleable name="ExtendSearchView">
+        <attr name="isShowSearchIcon" format="boolean"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textColorHint"/>
+        <attr name="android:textSize"/>
     </declare-styleable>
 </resources>

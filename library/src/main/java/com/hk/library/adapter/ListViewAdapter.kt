@@ -16,18 +16,18 @@ import com.hk.library.view.LoadProgressDialog
 abstract class ListViewAdapter: BaseAdapter() {
     protected var layout: Int = 0
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var convertView = convertView
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
+        var convertView1 = convertView
         val holder: BaseViewHolder
-        if (convertView == null) {
+        if (convertView1 == null) {
             layout = getLayoutId()
-            convertView = View.inflate(parent.context, layout, null)
-            holder = getViewHolder(convertView, parent)
-            convertView!!.tag = holder
+            convertView1 = View.inflate(parent.context, layout, null)
+            holder = getViewHolder(convertView1, parent)
+            convertView1!!.tag = holder
         } else
-            holder = convertView.tag as BaseViewHolder
+            holder = convertView?.tag as BaseViewHolder
         holder.setData(position)
-        return convertView
+        return convertView1
     }
 
     abstract fun getLayoutId():Int
@@ -38,7 +38,7 @@ abstract class ListViewAdapter: BaseAdapter() {
      */
     open inner class BaseViewHolder(protected var convertView: View, parent: ViewGroup) :
             IView, View.OnClickListener {
-        override val contentView: View
+        override val iiView: View
             get() = convertView
         protected var position: Int = 0
         protected var context: BaseActivity = parent.context as BaseActivity

@@ -11,7 +11,7 @@ import com.hk.library.view.LoadProgressDialog
  * Created by 23641 on 2017/6/15.
  */
 open class RecyclerHolder(itemView:View) : RecyclerView.ViewHolder(itemView), IView {
-    override val contentView: View
+    override val iiView: View
         get() = itemView
 
     open fun setData(position:Int){}

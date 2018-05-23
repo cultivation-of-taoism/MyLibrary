@@ -1,0 +1,27 @@
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hk.fragment.HorizontalScrollFragment">
+    <com.qianmo.stampcoin.common.MyHorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_header_deal_record"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </com.qianmo.stampcoin.common.MyHorizontalScrollView>
+    <!-- TODO: Update blank fragment layout -->
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
