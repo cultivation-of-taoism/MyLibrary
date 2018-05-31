@@ -76,6 +76,12 @@
             android:layout_height="wrap_content"
             android:text="AgentWeb"
             android:onClick="onClick"/>
+        <Button
+            android:id="@+id/bt_jsCallAndroid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="jsCallAndroid"
+            android:onClick="onClick"/>
     </LinearLayout>
 
 </ScrollView>

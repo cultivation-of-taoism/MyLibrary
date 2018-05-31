@@ -3,7 +3,7 @@ package com.hk.ui
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-import com.hk.base.R
+import com.umeng.soexample.R
 
 class RoundCornerTabLayoutActivity : AppCompatActivity() {
 

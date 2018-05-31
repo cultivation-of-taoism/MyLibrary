@@ -8,7 +8,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.hk.GlideApp
 
-import com.hk.base.R
+import com.umeng.soexample.R
 import kotlinx.android.synthetic.main.activity_glide.*
 
 class GlideActivity : AppCompatActivity() {

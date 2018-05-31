@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.blankj.utilcode.util.ConvertUtils
 import com.hk.ApiPresenter
-import com.hk.base.R
+import com.umeng.soexample.R
 import com.hk.library.ui.BaseActivity
 import com.hk.library.view.LoadProgressDialog.Companion.confing
 
@@ -37,6 +37,9 @@ class MainActivity : BaseActivity() {
             R.id.bt_constraint_layout->startActivity(Intent(this,ConstraintLayoutActivity::class.java))
             R.id.bt_horizontal->startActivity(Intent(this,HorizontalScrollActivity::class.java))
             R.id.bt_agentWeb->startActivity(Intent(this,AgentWebActivity::class.java))
+            R.id.bt_jsCallAndroid->startActivity(Intent(this,AgentWebActivity::class.java).also {
+                it.putExtra(AgentWebActivity.URL, "file:///android_asset/test.html")
+            })
         }
     }
 }

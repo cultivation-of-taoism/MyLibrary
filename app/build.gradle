@@ -11,12 +11,26 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        //友盟集成所需
+        manifestPlaceholders = [qqappid: "tencent100424468"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
         }
     }
 }
@@ -33,30 +47,39 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
     implementation project(':library')
-    implementation 'com.android.support:appcompat-v7:26.+'
-    implementation 'org.litepal.android:core:+'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'org.litepal.android:core:1.6.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation 'com.android.support:support-v4:26.+'
-    implementation 'com.android.support:design:26.+'
-    implementation 'com.android.support:recyclerview-v7:26.+'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.leo.gesturelibray:GestureLibray:1.1.1'
-    implementation 'com.github.bumptech.glide:glide:4.2.0'
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-alpha-8'
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-alpha-8'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation ('com.github.bumptech.glide:glide:4.5.0') {
+        exclude group: 'com.android.support'
+    }
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
-    implementation 'com.blankj:utilcode:+'
-    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.blankj:utilcode:1.16.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.just.agentweb:agentweb:4.0.2'
     testImplementation 'junit:junit:4.12'
+    //友盟集成
+    implementation 'com.umeng.sdk:common:1.5.1'
+    implementation 'com.umeng.sdk:share-core:6.9.1'
+    implementation 'com.umeng.sdk:share-qq:6.9.1.1'
+    implementation 'com.umeng.sdk:share-wechat:6.9.1'
+    implementation 'com.umeng.sdk:shareboard-widget:6.9.1'
+    implementation 'com.umeng.sdk:debug:1.0.0'
 
-    kapt 'com.github.bumptech.glide:compiler:4.2.0'
+    kapt 'com.github.bumptech.glide:compiler:4.6.1'
 }
 repositories {
     mavenCentral()

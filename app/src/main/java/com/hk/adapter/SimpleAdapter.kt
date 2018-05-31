@@ -2,7 +2,7 @@ package com.hk.adapter
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.hk.base.R
+import com.umeng.soexample.R
 
 /**
  * Created by 23641 on 2017/10/25.

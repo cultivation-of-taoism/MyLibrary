@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试</title>
+    <style type="text/css">
+    button{
+        color: blue;
+        background-color: red;
+        font-size: 10em;
+        width: 100%
+    }
+    </style>
+    <script>
+        function onClick() {
+            window.android.share('测试分享！');
+            alert('分享成功！');
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="onClick()">
+        分享
+    </button>
+</body>
+</html>

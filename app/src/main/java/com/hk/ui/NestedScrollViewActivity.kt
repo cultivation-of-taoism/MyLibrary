@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.hk.adapter.SimpleAdapter
-import com.hk.base.R
+import com.umeng.soexample.R
 import kotlinx.android.synthetic.main.activity_nested_scroll_view.*
 
 class NestedScrollViewActivity : AppCompatActivity() {

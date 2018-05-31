@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.hk.ApiModel
 import com.hk.ApiPresenter
-import com.hk.base.R
+import com.umeng.soexample.R
 import com.hk.library.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_mvp.*
 import rundi.investmentadviser.entity.Token
