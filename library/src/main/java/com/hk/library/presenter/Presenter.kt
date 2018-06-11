@@ -2,6 +2,7 @@ package com.hk.library.presenter
 
 
 
+import com.hk.library.retrofit.ApiException
 import com.hk.library.ui.IView
 import com.hk.library.view.LoadProgressDialog
 
@@ -27,10 +28,8 @@ open class Presenter(protected var view: IView) : IPresenter {
         view.showError(error)
     }
 
-    override fun onError(error: Any, task: Int) {
-        if (error is Throwable)
-            view.showError(error.message?:"未知错误", task)
-        else
-            view.showError(error,task)
-    }
+    override fun onError(error: Any, task: Int) = if (error is ApiException)
+        view.showError(error.message , task)
+    else
+        view.showError(error,task)
 }
