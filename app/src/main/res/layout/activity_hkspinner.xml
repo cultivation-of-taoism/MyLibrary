@@ -24,15 +24,15 @@
             android:popupBackground="@color/colorAccent"
             android:entries="@array/spinner_entries"
             android:spinnerMode="dropdown"
-            android:gravity="left|center_vertical"
+            android:gravity="center"
             app:arrowDrawable="@drawable/chaoxia"
             app:arrowPadding="10dp"
             app:arrowMarginVertical="15dp"
             android:divider="@color/black"
             android:dividerHeight="10dp"
             android:background="@color/colorPrimaryDark"
-            android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:popupTheme="@style/AppTheme"
             android:dropDownWidth="wrap_content">
 

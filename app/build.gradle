@@ -14,6 +14,7 @@ android {
         //友盟集成所需
         manifestPlaceholders = [qqappid: "tencent100424468"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -33,6 +34,9 @@ android {
             keyPassword "android"
         }
     }
+    dexOptions {
+        preDexLibraries = false
+    }
 }
 
 dependencies {
@@ -41,11 +45,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation('com.hwangjr.rxbus:rxbus:+') {
-        exclude group: 'io.reactivex'
-        exclude group: 'com.jakewharton.timber'
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
     implementation project(':library')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'org.litepal.android:core:1.6.1'
@@ -54,22 +53,11 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.leo.gesturelibray:GestureLibray:1.1.1'
-    implementation ('com.github.bumptech.glide:glide:4.5.0') {
-        exclude group: 'com.android.support'
-    }
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
-    implementation 'com.blankj:utilcode:1.16.0'
-    implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.just.agentweb:agentweb:4.0.2'
+    implementation 'com.tamic.novate:novate:1.5.5'
+    implementation 'com.android.support:multidex:1.0.3'
     testImplementation 'junit:junit:4.12'
     //友盟集成
     implementation 'com.umeng.sdk:common:1.5.1'
@@ -79,7 +67,6 @@ dependencies {
     implementation 'com.umeng.sdk:shareboard-widget:6.9.1'
     implementation 'com.umeng.sdk:debug:1.0.0'
 
-    kapt 'com.github.bumptech.glide:compiler:4.6.1'
 }
 repositories {
     mavenCentral()

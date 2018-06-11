@@ -82,6 +82,12 @@
             android:layout_height="wrap_content"
             android:text="jsCallAndroid"
             android:onClick="onClick"/>
+        <Button
+            android:id="@+id/bt_novate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="novate联网"
+            android:onClick="onClick"/>
     </LinearLayout>
 
 </ScrollView>

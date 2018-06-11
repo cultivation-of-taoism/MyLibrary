@@ -65,7 +65,16 @@ class HKSpinner :AppCompatSpinner {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         if (View.MeasureSpec.getMode(widthMeasureSpec) == View.MeasureSpec.AT_MOST){
             setMeasuredDimension(measuredWidth + computeArrowWidth(measuredHeight) +
-                    arrowPadding.toInt(), measuredHeight)
+                    arrowPadding.toInt() + spinnerAdapter.paddingLeft + spinnerAdapter.paddingRight,
+                    measuredHeight)
+        }
+    }
+
+    override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        super.onLayout(changed, l, t, r, b)
+        getChildAt(0).run {
+            layout(0,top,this@HKSpinner.measuredWidth - computeArrowWidth(measuredHeight) -
+                    arrowPadding.toInt() - spinnerAdapter.paddingRight, bottom)
         }
     }
 
@@ -209,6 +218,10 @@ class HKSpinner :AppCompatSpinner {
     fun setData(data:List<CharSequence>){
         spinnerAdapter.clear()
         spinnerAdapter.addAll(data)
+        spinnerAdapter.notifyDataSetChanged()
+    }
+    fun setText(string: String){
+        spinnerAdapter.spinnerText = string
         spinnerAdapter.notifyDataSetChanged()
     }
 }

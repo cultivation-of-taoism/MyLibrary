@@ -1,4 +1,4 @@
-package com.qianmo.stampcoin.common
+package com.hk.library.common
 
 import android.support.design.widget.TabLayout
 import android.view.View

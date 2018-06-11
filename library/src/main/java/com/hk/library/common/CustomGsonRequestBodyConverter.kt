@@ -1,4 +1,4 @@
-package com.qianmo.stampcoin.common
+package com.hk.library.common
 
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.hk.adapter.SimpleAdapter
 
-import com.umeng.soexample.R
+import com.hk.R
 import kotlinx.android.synthetic.main.activity_smart_refresh_layout.*
 
 class SmartRefreshLayoutActivity : AppCompatActivity() {

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.webkit.JavascriptInterface
 import android.widget.FrameLayout
 import com.blankj.utilcode.util.ToastUtils
-import com.umeng.soexample.R
+import com.hk.R
 import com.just.agentweb.AgentWeb
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.socialize.PlatformConfig

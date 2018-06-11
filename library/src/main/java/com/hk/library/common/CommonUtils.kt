@@ -1,23 +1,14 @@
-package rundi.investmentadviser.common
+package com.hk.library.common
 
 import android.app.Activity
 import android.content.Context
 import android.os.Environment
-import android.os.storage.StorageManager
 import android.view.WindowManager
 
 
 import com.blankj.utilcode.util.SDCardUtils
-import com.blankj.utilcode.util.StringUtils
-import io.reactivex.Flowable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
-import io.reactivex.schedulers.Schedulers
 
 import java.io.File
-import java.lang.reflect.Array
-import java.lang.reflect.InvocationTargetException
-import java.lang.reflect.Method
 import java.util.Calendar
 
 /**

@@ -1,4 +1,4 @@
-package com.qianmo.stampcoin.common
+package com.hk.library.common
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

@@ -1,9 +1,8 @@
-package com.qianmo.stampcoin.common
+package com.hk.library.common
 
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import com.hk.library.ui.BaseActivity
-import com.hk.library.view.LoadProgressDialog
 
 /**
  * Created by Administrator on 2018/3/21.

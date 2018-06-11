@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.umeng.soexample.R
+import com.hk.R
 import kotlinx.android.synthetic.main.fragment_horizontal_scroll.*
 
 // TODO: Rename parameter arguments, choose names that match

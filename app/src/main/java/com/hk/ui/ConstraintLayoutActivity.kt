@@ -2,7 +2,7 @@ package com.hk.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.umeng.soexample.R
+import com.hk.R
 
 class ConstraintLayoutActivity : AppCompatActivity() {
 

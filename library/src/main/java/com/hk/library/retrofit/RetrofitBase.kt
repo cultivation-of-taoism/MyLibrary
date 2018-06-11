@@ -1,12 +1,16 @@
 package com.hk.library.retrofit
 
 import com.hk.library.presenter.IPresenter
+import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.io.IOException
 import java.net.ConnectException
@@ -28,14 +32,12 @@ class RetrofitBase {
         val retrofitBuilder = Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
-                //.addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(client.build())
 
     }
 }
-class ApiException(val code:Int,message:String): RuntimeException(message){
-    override fun toString(): String = "错误码：$code\n错误信息：$message"
-}
+
 open class RetrofitErrorBase(private val iPresenter: IPresenter, private val task:Int = 0): Consumer<Throwable> {
     override fun accept(e: Throwable) {
         e.printStackTrace()
@@ -50,4 +52,13 @@ open class RetrofitErrorBase(private val iPresenter: IPresenter, private val tas
         }
 
     }
+}
+/**
+ * rxjava异步简写
+ */
+fun <T> Flowable<T>.enqueue(subscribe: RetrofitSubscriber<T>){
+    subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext{ subscribe.checkResult(it) }
+            .subscribe(subscribe.lambdaSubscriber)
 }

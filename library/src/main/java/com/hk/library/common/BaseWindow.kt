@@ -1,4 +1,4 @@
-package rundi.investmentadviser.window
+package com.hk.library.common
 
 import android.app.Activity
 import android.content.Context
@@ -9,7 +9,6 @@ import android.widget.PopupWindow
 import com.hk.library.ui.BaseActivity
 import com.hk.library.ui.IView
 import com.hk.library.view.LoadProgressDialog
-import rundi.investmentadviser.common.CommonUtils
 
 /**
  * Created by 23641 on 2017/6/27.
@@ -41,7 +40,7 @@ open class BaseWindow
     constructor(id:Int,width:Int,height:Int,context: Context):super(View.inflate(context,id,null),width,height)
     constructor(view: View,width:Int,height:Int):super(view,width,height)
     override fun onDismiss() {
-        if (isChangeDark)CommonUtils.setBackgroundAlpha(context as Activity, 1f)
+        if (isChangeDark) CommonUtils.setBackgroundAlpha(context as Activity, 1f)
     }
     init {
         isTouchable = true
@@ -61,14 +60,14 @@ open class BaseWindow
     }
 
     override fun showAtLocation(parent: View?, gravity: Int, x: Int, y: Int) {
-        if (isChangeDark)CommonUtils.setBackgroundAlpha(context as Activity, 0.5f)
+        if (isChangeDark) CommonUtils.setBackgroundAlpha(context as Activity, 0.5f)
         super.showAtLocation(parent, gravity, x, y)
         afterShow()
     }
 
 
     override fun showAsDropDown(anchor: View?, xoff: Int, yoff: Int, gravity: Int) {
-        if (isChangeDark)CommonUtils.setBackgroundAlpha(context as Activity, 0.5f)
+        if (isChangeDark) CommonUtils.setBackgroundAlpha(context as Activity, 0.5f)
         super.showAsDropDown(anchor, xoff, yoff, gravity)
         afterShow()
     }

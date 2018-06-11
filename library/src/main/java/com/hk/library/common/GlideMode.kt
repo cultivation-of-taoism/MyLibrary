@@ -1,4 +1,4 @@
-package rundi.investmentadviser.common
+package com.hk.library.common
 
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.umeng.soexample">
+          package="com.hk">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -14,40 +14,44 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
 
     <application
-        android:name="com.hk.library.BaseApp"
+        android:name=".HKApp"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name="com.hk.ui.MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.hk.ui.HKSpinnerActivity">
+        <activity android:name=".ui.HKSpinnerActivity">
         </activity>
-        <activity android:name="com.hk.ui.RoundCornerTabLayoutActivity">
+        <activity android:name=".ui.RoundCornerTabLayoutActivity">
         </activity>
-        <activity android:name="com.hk.ui.MvpActivity">
+        <activity android:name=".ui.MvpActivity">
         </activity>
-        <activity android:name="com.hk.ui.CollapsingToolbarLayoutActivity">
+        <activity android:name=".ui.CollapsingToolbarLayoutActivity">
         </activity>
-        <activity android:name="com.hk.ui.GlideActivity">
+        <activity android:name=".ui.GlideActivity">
         </activity>
-        <activity android:name="com.hk.ui.SearchViewActivity">
+        <activity android:name=".ui.SearchViewActivity">
         </activity>
         <activity
-            android:name="com.hk.ui.SmartRefreshLayoutActivity"
+            android:name=".ui.SmartRefreshLayoutActivity"
             android:label="SmartRefreshLayout"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name="com.hk.ui.NestedScrollViewActivity">
+        <activity android:name=".ui.NestedScrollViewActivity">
         </activity>
-        <activity android:name="com.hk.ui.ConstraintLayoutActivity">
+        <activity android:name=".ui.ConstraintLayoutActivity">
         </activity>
-        <activity android:name="com.hk.ui.HorizontalScrollActivity">
+        <activity android:name=".ui.HorizontalScrollActivity">
         </activity>
-        <activity android:name="com.hk.ui.AgentWebActivity">
+        <activity android:name=".ui.AgentWebActivity">
+        </activity>
+        <activity android:name=".ui.NovateActivity">
+        </activity>
+        <activity android:name=".ui.RefreshAndLoadMoreActivity">
         </activity>
     </application>
 

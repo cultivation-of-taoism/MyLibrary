@@ -9,7 +9,9 @@ import com.hk.library.ui.IView
 class ApiPresenter(iView: IView):Presenter(iView) {
     private val model:ApiModel = ApiModel(this)
     fun registerToken(serial: String){
-        dialog.show()
         model.registerToken(serial)
+    }
+    fun getInformationList(page: Int){
+        model.getInformationList(page)
     }
 }

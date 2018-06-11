@@ -1,4 +1,4 @@
-package com.qianmo.stampcoin.common
+package com.hk.library.common
 
 import android.content.Context
 import android.support.v7.widget.TintContextWrapper
