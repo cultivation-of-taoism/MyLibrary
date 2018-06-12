@@ -10,4 +10,20 @@
         <!-- 设置window背景透明，也就是去边框 -->
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+    <style name="Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <style name="ToolBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="titleTextAppearance">@style/Title</item>
+        <item name="navigationIcon">@drawable/ic_back</item>
+    </style>
 </resources>

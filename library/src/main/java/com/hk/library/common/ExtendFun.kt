@@ -10,7 +10,6 @@ import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.SPUtils
 import com.google.gson.Gson
 import com.hk.library.ui.BaseActivity
-import com.hk.library.view.LoadProgressDialog
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
@@ -19,9 +18,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by Administrator on 2018/3/21.
  */
-fun WebView.setMobileStyle(loadProgressDialog: LoadProgressDialog, onTitleReceive: (String)->Unit){
-    webViewClient = MyWebViewClient(loadProgressDialog)
-    webChromeClient = MyChromeClient(onTitleReceive)
+fun WebView.setMobileStyle() {
     setLayerType(View.LAYER_TYPE_SOFTWARE, null)
     settings.javaScriptEnabled = true
     settings.loadsImagesAutomatically = true
