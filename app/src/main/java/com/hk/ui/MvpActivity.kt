@@ -6,6 +6,7 @@ import android.view.View
 import com.hk.ApiModel
 import com.hk.ApiPresenter
 import com.hk.R
+import com.hk.fragment.SimpleFragment
 import com.hk.library.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_mvp.*
 import rundi.investmentadviser.entity.Token
@@ -16,6 +17,14 @@ class MvpActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mvp)
         presenter = ApiPresenter(this)
+        setView()
+    }
+
+    override fun setView() {
+        super.setView()
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, SimpleFragment())
+                .commit()
     }
 
     override fun onClick(v: View) {

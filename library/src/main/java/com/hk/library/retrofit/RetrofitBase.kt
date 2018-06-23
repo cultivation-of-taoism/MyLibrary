@@ -62,7 +62,7 @@ fun <T> Flowable<T>.enqueue(subscribe: RetrofitSubscriber<T>){
     subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext{ subscribe.checkResult(it) }
-            .doOnCancel { LogUtils.v("取消请求") }
+            .doOnCancel { LogUtils.v("取消网络请求订阅！") }
             .bindToLifecycle(subscribe.iPresenter.lifecycleOwner)//hint RxLifeCycle不能在stop生命周期之后执行
             .subscribe(subscribe.lambdaSubscriber)
 }
