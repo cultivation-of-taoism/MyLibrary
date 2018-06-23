@@ -1,5 +1,6 @@
 package com.hk.library.adapter
 
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,8 @@ abstract class ListViewAdapter: BaseAdapter() {
      */
     open inner class BaseViewHolder(protected var convertView: View, parent: ViewGroup) :
             IView, View.OnClickListener {
+        override val lifecycleOwner: LifecycleOwner
+            get() = context
         override val iiView: View
             get() = convertView
         protected var position: Int = 0

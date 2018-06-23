@@ -1,6 +1,7 @@
 package com.hk.library.common
 
 import android.app.Activity
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.support.v7.widget.TintContextWrapper
@@ -15,6 +16,8 @@ import com.hk.library.view.LoadProgressDialog
  */
 open class BaseWindow
     :PopupWindow , PopupWindow.OnDismissListener , IView{
+    override val lifecycleOwner: LifecycleOwner
+        get() = activity
     override val iiView: View = contentView
     override val mContext: Context = iiView.context
     protected val activity: BaseActivity = when (mContext) {

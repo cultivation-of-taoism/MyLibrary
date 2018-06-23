@@ -2,6 +2,7 @@ package com.hk.library.presenter
 
 
 
+import android.arch.lifecycle.LifecycleOwner
 import com.hk.library.retrofit.ApiException
 import com.hk.library.ui.IView
 import com.hk.library.view.LoadProgressDialog
@@ -11,6 +12,9 @@ import com.hk.library.view.LoadProgressDialog
  */
 
 open class Presenter(protected var view: IView) : IPresenter {
+    override val lifecycleOwner: LifecycleOwner
+        get() = view.lifecycleOwner
+
     override fun showProgress(isShow: Boolean) {
         if (isShow) view.loadProgressDialog.show()
         else view.loadProgressDialog.dismiss()

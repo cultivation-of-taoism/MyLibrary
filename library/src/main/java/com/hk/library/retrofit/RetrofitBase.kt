@@ -1,6 +1,8 @@
 package com.hk.library.retrofit
 
+import com.blankj.utilcode.util.LogUtils
 import com.hk.library.presenter.IPresenter
+import com.trello.rxlifecycle2.android.lifecycle.kotlin.bindToLifecycle
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
@@ -60,5 +62,7 @@ fun <T> Flowable<T>.enqueue(subscribe: RetrofitSubscriber<T>){
     subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext{ subscribe.checkResult(it) }
+            .doOnCancel { LogUtils.v("取消请求") }
+            .bindToLifecycle(subscribe.iPresenter.lifecycleOwner)//hint RxLifeCycle不能在stop生命周期之后执行
             .subscribe(subscribe.lambdaSubscriber)
 }

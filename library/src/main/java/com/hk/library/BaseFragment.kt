@@ -1,5 +1,6 @@
 package com.hk.library
 
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.view.View
@@ -13,6 +14,8 @@ import kotlin.properties.Delegates
  */
 
 open class BaseFragment : Fragment(), IView, View.OnClickListener {
+    override val lifecycleOwner: LifecycleOwner
+        get() = this
     protected var mView: View by Delegates.notNull()
     override val iiView: View by lazy { mView }
     protected var activity: BaseActivity by Delegates.notNull()

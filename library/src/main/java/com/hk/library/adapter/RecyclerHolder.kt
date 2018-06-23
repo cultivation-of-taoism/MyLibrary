@@ -1,5 +1,6 @@
 package com.hk.library.adapter
 
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -11,6 +12,8 @@ import com.hk.library.view.LoadProgressDialog
  * Created by 23641 on 2017/6/15.
  */
 open class RecyclerHolder(itemView:View) : RecyclerView.ViewHolder(itemView), IView {
+    override val lifecycleOwner: LifecycleOwner
+        get() = mContext as BaseActivity
     override val iiView: View
         get() = itemView
 

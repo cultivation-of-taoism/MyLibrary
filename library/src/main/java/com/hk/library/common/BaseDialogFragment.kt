@@ -1,5 +1,6 @@
 package com.hk.library.common
 
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -14,6 +15,8 @@ import com.hk.library.view.LoadProgressDialog
  * Created by 23641 on 2017/9/11.
  */
 open class BaseDialogFragment: DialogFragment(), IView {
+    override val lifecycleOwner: LifecycleOwner
+        get() = this
     override val iiView: View
         get() = dialog.window.decorView
     override val mContext: Context

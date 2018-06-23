@@ -1,5 +1,6 @@
 package com.hk.library.common
 
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.support.v7.widget.TintContextWrapper
 import android.view.View
@@ -12,6 +13,8 @@ import com.hk.library.view.LoadProgressDialog
  * Created by 23641 on 2017/10/16.
  */
 open class BaseQuickViewHolder(itemView: View):BaseViewHolder(itemView),IView {
+    override val lifecycleOwner: LifecycleOwner
+        get() = activity
     override val iiView: View = itemView
     override lateinit var loadProgressDialog: LoadProgressDialog
     override val mContext: Context = itemView.context

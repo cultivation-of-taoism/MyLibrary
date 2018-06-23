@@ -1,5 +1,6 @@
 package com.hk.library.ui
 
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.view.View
 
@@ -17,4 +18,5 @@ interface IView {
     val mContext: Context
     var loadProgressDialog: LoadProgressDialog
     val iiView:View
+    val lifecycleOwner: LifecycleOwner
 }

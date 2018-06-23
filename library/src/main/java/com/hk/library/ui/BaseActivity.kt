@@ -1,6 +1,7 @@
 package com.hk.library.ui
 
 import android.app.Activity
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,13 +9,14 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.hk.library.view.LoadProgressDialog
-import kotlin.properties.Delegates
 
 /**
  * Created by Administrator on 2016/11/28.
  */
 
 open class BaseActivity : AppCompatActivity(), IView, View.OnClickListener {
+    override val lifecycleOwner: LifecycleOwner
+        get() = this
     override val iiView: View
         get() = window.decorView
 
