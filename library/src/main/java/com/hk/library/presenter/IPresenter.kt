@@ -12,5 +12,5 @@ interface IPresenter {
     fun onSuccess(rs: Any, task:Int)
     fun onError(error: String)
     fun onError(error: Any, task:Int)
-    fun showProgress(isShow: Boolean)
+    fun controlProgress(isShow: Boolean)
 }

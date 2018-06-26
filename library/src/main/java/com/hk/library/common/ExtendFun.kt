@@ -26,9 +26,9 @@ fun WebView.setMobileStyle() {
     settings.loadWithOverviewMode = true
     settings.domStorageEnabled = true
     settings.cacheMode = WebSettings.LOAD_NO_CACHE
-    settings.setSupportZoom(true);
-    settings.builtInZoomControls = true;
-    settings.displayZoomControls = false;
+    settings.setSupportZoom(true)
+    settings.builtInZoomControls = true
+    settings.displayZoomControls = false
 }
 /**
  * 查看textview是否出现省略号

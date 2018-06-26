@@ -15,7 +15,7 @@ open class Presenter(protected var view: IView) : IPresenter {
     override val lifecycleOwner: LifecycleOwner
         get() = view.lifecycleOwner
 
-    override fun showProgress(isShow: Boolean) {
+    override fun controlProgress(isShow: Boolean) {
         if (isShow) view.loadProgressDialog.show()
         else view.loadProgressDialog.dismiss()
     }
