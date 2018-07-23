@@ -88,6 +88,24 @@
             android:layout_height="wrap_content"
             android:text="novate联网"
             android:onClick="onClick"/>
+        <Button
+            android:id="@+id/bt_recycler_view_divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RecyclerView分割线"
+            android:onClick="onClick"/>
+        <Button
+            android:id="@+id/bt_flow_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="流式布局"
+            android:onClick="onClick"/>
+        <Button
+            android:id="@+id/bt_excel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="表格"
+            android:onClick="onClick"/>
     </LinearLayout>
 
 </ScrollView>

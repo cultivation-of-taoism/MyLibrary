@@ -5,5 +5,4 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/hello_blank_fragment"
-    android:background="@color/red"
-    tools:showIn="@layout/fragment_horizontal_scroll"/>
+    android:background="@color/red"/>

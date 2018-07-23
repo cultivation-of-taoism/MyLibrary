@@ -41,6 +41,9 @@ class MainActivity : BaseActivity() {
                 it.putExtra(AgentWebActivity.URL, "file:///android_asset/test.html")
             })
             R.id.bt_novate->startActivity(Intent(this, NovateActivity::class.java))
+            R.id.bt_recycler_view_divider->startActivity(Intent(this, RecyclerDividerActivity::class.java))
+            R.id.bt_flow_layout->startActivity(Intent(this, FlowLayoutActivity::class.java))
+            R.id.bt_excel->startActivity(Intent(this, ExcelActivity::class.java))
         }
     }
 }
