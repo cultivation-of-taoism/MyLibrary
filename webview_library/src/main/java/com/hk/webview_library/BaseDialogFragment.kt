@@ -1,4 +1,4 @@
-package com.lingniu.shiyingguoji
+package com.hk.webview_library
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

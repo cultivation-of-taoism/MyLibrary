@@ -5,10 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AlertDialog
-import android.view.View
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.UriUtils
-import com.lingniu.shiyingguoji.ChooseImageDialog
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.tencent.smtt.export.external.interfaces.JsResult

@@ -1,4 +1,4 @@
-package com.lingniu.shiyingguoji
+package com.hk.webview_library
 
 
 import android.graphics.Color
@@ -14,7 +14,6 @@ import android.view.ViewGroup
 import android.webkit.ValueCallback
 import com.blankj.utilcode.util.SDCardUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.hk.webview_library.R
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
