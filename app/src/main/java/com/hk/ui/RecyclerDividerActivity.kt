@@ -22,6 +22,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 
 import com.hk.R
 import com.hk.library.view.DividerItemDecoration
+import com.hk.library.view.HKLinearLayoutManager
 import kotlinx.android.synthetic.main.activity_recycler_divider.*
 import kotlinx.android.synthetic.main.fragment_recycler_divider.view.*
 
@@ -107,7 +108,7 @@ class RecyclerDividerActivity : AppCompatActivity() {
             val rv = rootView as RecyclerView
             when(num){
                 1-> {
-                    rv.layoutManager = LinearLayoutManager(activity)
+                    rv.layoutManager = HKLinearLayoutManager(activity)
                     rv.addItemDecoration(DividerItemDecoration(activity, RecyclerView.HORIZONTAL))
                 }
                 2-> {
