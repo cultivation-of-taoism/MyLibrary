@@ -11,7 +11,7 @@ import com.scwang.smartrefresh.layout.footer.BallPulseFooter
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 
-class RefreshHelper(var adapter: BaseQuickAdapter<out Any,out BaseViewHolder>,
+open class RefreshHelper(var adapter: BaseQuickAdapter<out Any,out BaseViewHolder>,
                     val refreshLayout: SmartRefreshLayout,
                     val loadData: (Int)->Unit)
     : OnRefreshListener, OnLoadMoreListener {
@@ -37,14 +37,14 @@ class RefreshHelper(var adapter: BaseQuickAdapter<out Any,out BaseViewHolder>,
     override fun onLoadMore(refreshlayout: RefreshLayout) {
         loadData(page)
     }
-    fun onDataLoaded(data: List<Nothing>){
+    open fun onDataLoaded(data: List<Nothing>){
         val finish: Boolean = data.size < PAGE_SIZE
         if (data.isNotEmpty()){
             adapter.addData(data)
             adapter.notifyDataSetChanged()
         }
-        if (finish&&refreshLayout.state == RefreshState.Loading)//判断是否加载完毕
-            refreshLayout.finishLoadMoreWithNoMoreData()
+        if (finish)//判断是否加载完毕
+            refreshLayout.setNoMoreData(true)
         else
             finishRefreshOrLoadMore()
         page++
@@ -61,7 +61,7 @@ class RefreshHelper(var adapter: BaseQuickAdapter<out Any,out BaseViewHolder>,
         checkEmptyView(adapter)
     }
 
-    private fun checkEmptyView(adapter: BaseQuickAdapter<out Any, out BaseViewHolder>) {
+    open fun checkEmptyView(adapter: BaseQuickAdapter<out Any, out BaseViewHolder>) {
         if (adapter.emptyView != null) {
             if (adapter.emptyView.parent != null)
                 (adapter.emptyView.parent as ViewGroup).removeView(adapter.emptyView)

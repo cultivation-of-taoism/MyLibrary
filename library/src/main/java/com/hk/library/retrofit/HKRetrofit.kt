@@ -1,5 +1,6 @@
 package com.hk.library.retrofit
 
+import com.blankj.utilcode.util.LogUtils
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,8 +11,10 @@ import java.util.concurrent.TimeUnit
 
 object HKRetrofit {
     val client = OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor()
-                    .setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
+                if (it.startsWith("{")) LogUtils.json(it)
+                else HttpLoggingInterceptor.Logger.DEFAULT.log(it)
+            }).setLevel(HttpLoggingInterceptor.Level.BODY))
             .readTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .connectTimeout(10, TimeUnit.SECONDS)

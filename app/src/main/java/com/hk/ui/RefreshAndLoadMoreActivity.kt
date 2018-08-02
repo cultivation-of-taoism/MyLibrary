@@ -28,10 +28,12 @@ class RefreshAndLoadMoreActivity : BaseActivity() {
         refreshHelper = RefreshHelper(adapter, layout_refresh) {  page->
             LogUtils.v("开始请求")
             apiPresenter.getInformationList(page)
-            finish()
         }
         layout_refresh.autoRefresh(500)
 
+    }
+
+    override fun showProgress(isShow: Boolean) {
     }
 
     override fun showSuccess(`object`: Any, task: Int) {

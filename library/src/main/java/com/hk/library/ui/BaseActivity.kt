@@ -15,6 +15,11 @@ import com.hk.library.view.LoadProgressDialog
  */
 
 open class BaseActivity : AppCompatActivity(), IView, View.OnClickListener {
+    override fun showProgress(isShow: Boolean) {
+        if (isShow) loadProgressDialog.show()
+        else loadProgressDialog.dismiss()
+    }
+
     override val lifecycleOwner: LifecycleOwner
         get() = this
     override val iiView: View

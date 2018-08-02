@@ -39,6 +39,11 @@ abstract class ListViewAdapter: BaseAdapter() {
      */
     open inner class BaseViewHolder(protected var convertView: View, parent: ViewGroup) :
             IView, View.OnClickListener {
+        override fun showProgress(isShow: Boolean) {
+            if (isShow) loadProgressDialog.show()
+            else loadProgressDialog.dismiss()
+        }
+
         override val lifecycleOwner: LifecycleOwner
             get() = context
         override val iiView: View

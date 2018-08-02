@@ -15,6 +15,11 @@ import com.hk.library.view.LoadProgressDialog
  * Created by 23641 on 2017/9/11.
  */
 open class BaseDialogFragment: DialogFragment(), IView {
+    override fun showProgress(isShow: Boolean) {
+        if (isShow) loadProgressDialog.show()
+        else loadProgressDialog.dismiss()
+    }
+
     override val lifecycleOwner: LifecycleOwner
         get() = this
     override val iiView: View

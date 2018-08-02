@@ -15,7 +15,9 @@ interface IView {
     fun showSuccess(`object`: Any, task:Int)
     fun showError(error: String)
     fun showError(error: Any, task:Int)
+    fun showProgress(isShow: Boolean)
     val mContext: Context
+    @Deprecated("废弃的")
     var loadProgressDialog: LoadProgressDialog
     val iiView:View
     val lifecycleOwner: LifecycleOwner

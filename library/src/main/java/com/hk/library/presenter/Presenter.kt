@@ -16,8 +16,7 @@ open class Presenter(protected var view: IView) : IPresenter {
         get() = view.lifecycleOwner
 
     override fun controlProgress(isShow: Boolean) {
-        if (isShow) view.loadProgressDialog.show()
-        else view.loadProgressDialog.dismiss()
+        view.showProgress(isShow)
     }
 
     protected var dialog: LoadProgressDialog = view.loadProgressDialog

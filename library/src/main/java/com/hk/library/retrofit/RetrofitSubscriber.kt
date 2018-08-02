@@ -9,11 +9,10 @@ import io.reactivex.functions.Consumer
 import io.reactivex.internal.subscribers.LambdaSubscriber
 import org.reactivestreams.Subscription
 
-open class RetrofitSubscriber<T>(val iPresenter: IPresenter, private val task:Int){
+open class RetrofitSubscriber<T>(val iPresenter: IPresenter, private val task:Int = 0){
     val lambdaSubscriber = LambdaSubscriber<T>(Consumer{
         onNext(it)
     }, Consumer { onError(it) }, Action { onComplete() }, Consumer { onSubscribe(it) })
-    open val isList: Boolean = false
 
     open fun onNext(t: T) {
         checkResult(t)
@@ -66,8 +65,7 @@ open class RetrofitSubscriber<T>(val iPresenter: IPresenter, private val task:In
             onComplete()
             return
         }
-        if (!isList)
-            iPresenter.controlProgress(true)
+        iPresenter.controlProgress(true)
     }
 
     @Throws(Throwable::class)

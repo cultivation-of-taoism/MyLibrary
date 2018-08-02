@@ -13,6 +13,11 @@ import com.hk.library.view.LoadProgressDialog
  * Created by 23641 on 2017/10/16.
  */
 open class BaseQuickViewHolder(itemView: View):BaseViewHolder(itemView),IView {
+    override fun showProgress(isShow: Boolean) {
+        if (isShow) loadProgressDialog.show()
+        else loadProgressDialog.dismiss()
+    }
+
     override val lifecycleOwner: LifecycleOwner
         get() = activity
     override val iiView: View = itemView

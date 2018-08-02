@@ -22,8 +22,8 @@ abstract class LazyLoadFragment : BaseFragment() {
     protected var isLoad = false
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(setContentView(), container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val view = inflater.inflate(setContentView(), container, false)
         isInit = true
         return view
     }

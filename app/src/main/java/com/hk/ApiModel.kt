@@ -43,10 +43,6 @@ class ApiModel(val iPresenter:IPresenter): Model(iPresenter) {
                     override fun checkResult(t: TResult<List<Information>>) {
                         if (t.code != 100) throw ApiException(t.code, t.msg)
                     }
-
-                    override val isList: Boolean
-                        get() = true
-
                 })
     }
 

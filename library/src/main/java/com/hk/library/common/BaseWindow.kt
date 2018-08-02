@@ -16,6 +16,11 @@ import com.hk.library.view.LoadProgressDialog
  */
 open class BaseWindow
     :PopupWindow , PopupWindow.OnDismissListener , IView{
+    override fun showProgress(isShow: Boolean) {
+        if (isShow) loadProgressDialog.show()
+        else loadProgressDialog.dismiss()
+    }
+
     override val lifecycleOwner: LifecycleOwner
         get() = activity
     override val iiView: View = contentView

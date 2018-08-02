@@ -14,6 +14,11 @@ import kotlin.properties.Delegates
  */
 
 open class BaseFragment : Fragment(), IView, View.OnClickListener {
+    override fun showProgress(isShow: Boolean) {
+        if (isShow) loadProgressDialog.show()
+        else loadProgressDialog.dismiss()
+    }
+
     override val lifecycleOwner: LifecycleOwner
         get() = this
     protected var mView: View by Delegates.notNull()
