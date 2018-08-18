@@ -20,27 +20,12 @@ open class RetrofitSubscriber<T>(val iPresenter: IPresenter, private val task:In
     }
 
     private fun onError(e: kotlin.Throwable?){
-        if (e?.message != null) {
-            LogUtils.v("Novate", e.message)
-        } else {
-            LogUtils.v("Novate", "Throwable  || Message == Null")
-        }
-
+        e?.printStackTrace()
         if (e is ApiException) {
-            LogUtils.e("Novate", "--> e instanceof Throwable")
-            LogUtils.e("Novate", "--> " + e.cause.toString())
             this.onError(e)
         } else {
-            LogUtils.e("Novate", "e !instanceof Throwable")
-            var detail = ""
-            if (e!!.cause != null) {
-                detail = e.cause!!.message!!
-            }
-
-            LogUtils.e("Novate", "--> $detail")
             this.onError(RetrofitException.handleException(e))
         }
-
         this.onComplete()
     }
 
@@ -49,20 +34,20 @@ open class RetrofitSubscriber<T>(val iPresenter: IPresenter, private val task:In
     }
 
 
-
     open fun onComplete() {
         iPresenter.controlProgress(false)
     }
 
     open fun onSubscribe(s: Subscription) {
         s.request(Long.MAX_VALUE)
-        onStart()
+        onStart(s)
     }
 
-    open fun onStart() {
+    open fun onStart(s: Subscription) {
         if (!NetworkUtils.isConnected()) {
             ToastUtils.showShort("似乎没网O")
             onComplete()
+            s.cancel()
             return
         }
         iPresenter.controlProgress(true)

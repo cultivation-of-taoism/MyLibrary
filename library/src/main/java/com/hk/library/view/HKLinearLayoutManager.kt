@@ -1,6 +1,7 @@
 package com.hk.library.view
 
 import android.content.Context
+import android.graphics.Rect
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -21,6 +22,15 @@ class HKLinearLayoutManager(context: Context): LinearLayoutManager(context, Line
     override fun onMeasure(recycler: RecyclerView.Recycler?, state: RecyclerView.State?, widthSpec: Int, heightSpec: Int) {
         mViewPortWidth = View.MeasureSpec.getSize(widthSpec)
         super.onMeasure(recycler, state, widthSpec, heightSpec)
+    }
+
+    override fun setMeasuredDimension(childrenBounds: Rect, wSpec: Int, hSpec: Int) {
+        val mode = View.MeasureSpec.getMode(wSpec)
+        if (mode == View.MeasureSpec.AT_MOST){
+            val widthMeasureSpec1 = View.MeasureSpec.makeMeasureSpec(Int.MAX_VALUE.shr(1),mode)
+            super.setMeasuredDimension(childrenBounds, widthMeasureSpec1, hSpec)
+        }else
+            super.setMeasuredDimension(childrenBounds, wSpec, hSpec)
     }
 
 

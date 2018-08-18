@@ -51,13 +51,6 @@ public class RetrofitException {
     private static final int HANDEL_ERRROR = 417;
 
     public static ApiException handleException(java.lang.Throwable e) {
-
-        LogUtils.e("Novate", e.getMessage());
-        String detail = "";
-        if (e.getCause() != null) {
-            detail = e.getCause().getMessage();
-        }
-        LogUtils.e("Novate", detail);
         ApiException ex;
         if ( e instanceof HttpException) {
             HttpException httpException = (HttpException) e;
@@ -124,13 +117,11 @@ public class RetrofitException {
             ex.setMessage("证书验证失败");
             return ex;
         } else if (e instanceof java.security.cert.CertPathValidatorException) {
-            LogUtils.e("Novate", e.getMessage());
             ex = new ApiException(e, ERROR.SSL_NOT_FOUND);
             ex.setMessage("证书路径没找到");
 
             return ex;
         } else if (e instanceof SSLPeerUnverifiedException) {
-            LogUtils.e("Novate", e.getMessage());
             ex = new ApiException(e, ERROR.SSL_NOT_FOUND);
             ex.setMessage("无有效的SSL证书");
             return ex;
@@ -152,12 +143,10 @@ public class RetrofitException {
             ex.setMessage("数据有空");
             return ex;
         } else if (e instanceof UnknownHostException){
-            LogUtils.e("Novate", e.getMessage());
             ex = new ApiException(e, NOT_FOUND);
             ex.setMessage("服务器地址未找到,请检查网络或Url");
             return ex;
         } else {
-            LogUtils.e("Novate", e.getMessage());
             ex = new ApiException(e, ERROR.UNKNOWN);
             ex.setMessage(e.getMessage());
             return ex;

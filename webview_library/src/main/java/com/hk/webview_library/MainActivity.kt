@@ -1,8 +1,11 @@
 package com.hk.webview_library
 
 import android.Manifest
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
@@ -24,6 +27,18 @@ abstract class MainActivity : TbsPlusMainActivity() {
     abstract val url: String
     private val hkWebChromeClient = HKWebChromeClient()
     lateinit var progress: View
+    private lateinit var webView: WebView
+    private var backPressTime = System.currentTimeMillis()
+    private val dialog by lazy {
+        AlertDialog.Builder(this)
+                .setMessage("确认退出？")
+                .setPositiveButton("确定") { dialog, _->
+                    super.onBackPressed()
+                    dialog.dismiss()
+                }
+                .setNegativeButton("取消") { dialog, _->dialog.dismiss()}
+                .create()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initDataWithPermissionCheck()
@@ -47,7 +62,8 @@ abstract class MainActivity : TbsPlusMainActivity() {
         hkWebChromeClient.apply {
             fragmentManager = supportFragmentManager
         }
-        val webView = container.getChildAt(0) as WebView
+        webView = container.getChildAt(0) as WebView
+        webView.setBackgroundColor(Color.TRANSPARENT)
         webView.webChromeClient = hkWebChromeClient
         webView.webViewClient = HKWebViewClient().apply { progress = this@MainActivity.progress }
     }
@@ -85,4 +101,16 @@ abstract class MainActivity : TbsPlusMainActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         onRequestPermissionsResult(requestCode,  grantResults)
     }
+
+    override fun onBackPressed() {
+        val time = System.currentTimeMillis()
+        if (time - backPressTime > 2000) {
+            if (webView.canGoBack())
+                webView.goBack()
+            else dialog.show()
+        }else dialog.show()
+        backPressTime = time
+    }
+
+
 }
