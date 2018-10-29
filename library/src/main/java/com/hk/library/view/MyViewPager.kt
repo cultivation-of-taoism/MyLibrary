@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import com.qianmo.stampcoin.common.MyHorizontalScrollView
 
 class MyViewPager : ViewPager {
     constructor(context: Context) : super(context)

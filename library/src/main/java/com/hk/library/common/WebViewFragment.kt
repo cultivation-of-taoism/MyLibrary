@@ -78,7 +78,8 @@ class WebViewFragment : LazyLoadFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        agentWeb.webLifeCycle.onDestroy()
+        if (this::agentWeb.isInitialized)
+            agentWeb.webLifeCycle.onDestroy()
     }
 
 }

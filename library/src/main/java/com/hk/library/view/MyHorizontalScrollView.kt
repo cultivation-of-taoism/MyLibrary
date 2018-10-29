@@ -1,4 +1,4 @@
-package com.qianmo.stampcoin.common
+package com.hk.library.view
 
 import android.content.Context
 import android.util.AttributeSet

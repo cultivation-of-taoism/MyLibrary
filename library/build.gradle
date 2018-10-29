@@ -8,7 +8,6 @@ group='com.github.qq2364121253'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '27.0.3'
 
     defaultConfig {
         minSdkVersion 15
@@ -37,7 +36,7 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api 'com.blankj:utilcode:1.16.4'
+    api 'com.blankj:utilcode:1.19.0'
     api('com.hwangjr.rxbus:rxbus:2.0.0') {
         exclude group: 'io.reactivex'
         exclude group: 'com.jakewharton.timber'
@@ -50,7 +49,7 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     api 'com.squareup.retrofit2:converter-scalars:2.4.0'
-    api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
     api 'com.just.agentweb:agentweb:4.0.2'

@@ -4,7 +4,6 @@
           package="com.hk">
 
     <uses-sdk
-        android:minSdkVersion="15"
         tools:overrideLibrary="cn.zhouchaoyuan.excelpanel"/>
 
     <uses-permission android:name="android.permission.INTERNET"/>

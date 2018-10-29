@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hk.fragment.HorizontalScrollFragment">
-    <com.qianmo.stampcoin.common.MyHorizontalScrollView
+    <com.hk.library.view.MyHorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -21,7 +21,7 @@
                 android:layout_weight="1">
             </android.support.v7.widget.RecyclerView>
         </LinearLayout>
-    </com.qianmo.stampcoin.common.MyHorizontalScrollView>
+    </com.hk.library.view.MyHorizontalScrollView>
     <!-- TODO: Update blank fragment layout -->
 
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

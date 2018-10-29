@@ -60,7 +60,7 @@ class HKWebChromeClient: WebChromeClient() {
                     LogUtils.v(image)
                     if (image == null)mUploadMessage.onReceiveValue(null)
                     image?.let {
-                        val uri = UriUtils.getUriForFile(File(it))
+                        val uri = UriUtils.file2Uri(File(it))
                         mUploadMessage.onReceiveValue(arrayOf(uri))
                     }
                 } else mUploadMessage.onReceiveValue(null)

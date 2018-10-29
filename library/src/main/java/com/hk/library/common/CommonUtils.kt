@@ -9,6 +9,8 @@ import android.view.WindowManager
 import com.blankj.utilcode.util.SDCardUtils
 
 import java.io.File
+import java.math.BigDecimal
+import java.math.RoundingMode
 import java.util.Calendar
 
 /**
@@ -76,6 +78,10 @@ object CommonUtils {
         if (!file.exists()) file.mkdir()
         return file.absolutePath
     }
-
+    fun keepDecimalPoint(value: String, decimalPoint: Int): String{
+        val bigDecimal = value.toBigDecimalOrNull() ?: BigDecimal(0)
+        val dv = bigDecimal.setScale(decimalPoint, RoundingMode.HALF_UP)
+        return dv.toString()
+    }
 
 }

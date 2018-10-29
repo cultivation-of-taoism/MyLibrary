@@ -65,7 +65,7 @@ public class AndroidOPermissionActivity extends BaseActivity {
     private void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.app_name);
-        builder.setMessage("为了正常升级 xxx APP，请点击设置按钮，允许安装未知来源应用，本功能只限用于 xxx APP版本升级");
+        builder.setMessage("为了正常升级 ，请点击设置按钮，允许安装未知来源应用，本功能只限用于版本升级");
         builder.setPositiveButton("设置", new DialogInterface.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override

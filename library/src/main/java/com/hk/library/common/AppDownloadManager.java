@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
@@ -29,7 +30,7 @@ public class AppDownloadManager {
     private DownloadManager mDownloadManager;
     private DownloadChangeObserver mDownLoadChangeObserver;
     private DownloadReceiver mDownloadReceiver;
-    private long mReqId;
+    private long mReqId = -1;
     private OnUpdateListener mUpdateListener;
 
     public AppDownloadManager(Activity activity) {
@@ -44,8 +45,14 @@ public class AppDownloadManager {
     }
 
     public void downloadApk(String apkUrl, String title, String desc) {
+        //先判断有没有任务在下载
+        if (isDownLoading()){
+            ToastUtils.showShort("有任务正在下载，请稍后...");
+            return;
+        }
         // fix bug : 装不了新版本，在下载之前应该删除已有文件
-        File apkFile = new File(weakReference.get().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "app_name.apk");
+        File apkFile = new File(weakReference.get().getExternalFilesDir(Environment
+                .DIRECTORY_DOWNLOADS), weakReference.get().getPackageName()+".apk");
 
         if (apkFile != null && apkFile.exists()) {
             apkFile.delete();
@@ -58,7 +65,8 @@ public class AppDownloadManager {
         request.setDescription(desc);
         // 完成后显示通知栏
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalFilesDir(weakReference.get(), Environment.DIRECTORY_DOWNLOADS, "app_name.apk");
+        request.setDestinationInExternalFilesDir(weakReference.get(), Environment.DIRECTORY_DOWNLOADS,
+                weakReference.get().getPackageName()+".apk");
         //在手机SD卡上创建一个download文件夹
         // Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).mkdir() ;
         //指定下载到SD卡的/download/my/目录下
@@ -138,11 +146,81 @@ public class AppDownloadManager {
             updateView();
         }
     }
+    //检查下载状态,查看有没有正在下载的任务
+    public boolean isDownLoading(){
+        if (mReqId!=-1){
+            switch (checkStatus()) {
+                //下载暂停
+                case DownloadManager.STATUS_PAUSED:
+                    //下载延迟
+                case DownloadManager.STATUS_PENDING:
+                    //正在下载
+                case DownloadManager.STATUS_RUNNING:
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    private String convertStatus(int status){
+        String message = "";
+        switch (status) {
+            case -1:
+                message = "取消下载！";
+                break;
+            //下载暂停
+            case DownloadManager.STATUS_PAUSED:
+                message = "下载暂停！";
+                break;
+            //下载延迟
+            case DownloadManager.STATUS_PENDING:
+                message = "下载延迟！";
+                break;
+            //正在下载
+            case DownloadManager.STATUS_RUNNING:
+                message = "正在下载！";
+                break;
+            case DownloadManager.STATUS_SUCCESSFUL:
+                message = "下载成功！";
+                break;
+            case DownloadManager.STATUS_FAILED:
+                message = "下载失败！";
+                break;
+            default:
+                message = "未知状态！";
+                break;
+        }
+        return message;
+    }
+
+    private int checkStatus(long id) {
+        int status = -1;
+        DownloadManager.Query query = new DownloadManager.Query();
+        //通过下载的id查找
+        query.setFilterById(id);
+        Cursor c = mDownloadManager.query(query);
+        if (c.moveToFirst()) {
+            status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
+        }
+        c.close();
+        LogUtils.v("状态:"+status+"->"+convertStatus(status));
+        return status;
+    }
+    private int checkStatus(){
+        return checkStatus(mReqId);
+    }
+
 
     class DownloadReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(final Context context, final Intent intent) {
+            LogUtils.e(TAG, "收到广播->"+intent.toString());
+            long completeDownLoadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+            int status = checkStatus(completeDownLoadId);
+            ToastUtils.showShort(convertStatus(status));
+            if (status!=DownloadManager.STATUS_SUCCESSFUL) return;
             boolean haveInstallPermission;
             // 兼容Android 8.0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -201,7 +279,8 @@ public class AppDownloadManager {
             } else { // Android 7.0 以上
                 uri = FileProvider.getUriForFile(context,
                         AppUtils.getAppPackageName() + ".provider",
-                        new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "app_name.apk"));
+                        new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
+                                AppUtils.getAppPackageName()+".apk"));
                 intentInstall.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             }
 
