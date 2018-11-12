@@ -1,6 +1,7 @@
 package com.hk.library.common
 
 
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -69,7 +70,17 @@ class WebViewFragment : LazyLoadFragment() {
                 })
                 .createAgentWeb()
                 .ready()
+        agentWeb = preWeb.go(null)
+        agentWeb.webCreator.apply {
+            webParentLayout.setBackgroundColor(Color.TRANSPARENT)
+            webView.setBackgroundColor(0)
+        }
+
         super.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 
     override fun lazyLoad() {

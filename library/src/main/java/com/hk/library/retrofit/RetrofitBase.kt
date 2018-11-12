@@ -5,6 +5,7 @@ import com.hk.library.presenter.IPresenter
 import com.trello.rxlifecycle2.android.lifecycle.kotlin.bindToLifecycle
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
@@ -58,11 +59,12 @@ open class RetrofitErrorBase(private val iPresenter: IPresenter, private val tas
 /**
  * rxjava异步简写
  */
-fun <T> Flowable<T>.enqueue(subscribe: RetrofitSubscriber<T>){
+fun <T> Flowable<T>.enqueue(subscribe: RetrofitSubscriber<T>): Disposable{
     subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext{ subscribe.checkResult(it) }
             .doOnCancel { LogUtils.v("取消网络请求订阅！") }
             .bindToLifecycle(subscribe.iPresenter.lifecycleOwner)//hint RxLifeCycle不能在stop生命周期之后执行
             .subscribe(subscribe.lambdaSubscriber)
+    return subscribe.lambdaSubscriber
 }

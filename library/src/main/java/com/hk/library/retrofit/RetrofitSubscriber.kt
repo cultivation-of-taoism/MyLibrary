@@ -35,7 +35,7 @@ open class RetrofitSubscriber<T>(val iPresenter: IPresenter, private val task:In
 
 
     open fun onComplete() {
-        iPresenter.controlProgress(false)
+        iPresenter.controlProgress(false, task)
     }
 
     open fun onSubscribe(s: Subscription) {
@@ -50,7 +50,7 @@ open class RetrofitSubscriber<T>(val iPresenter: IPresenter, private val task:In
             s.cancel()
             return
         }
-        iPresenter.controlProgress(true)
+        iPresenter.controlProgress(true, task)
     }
 
     @Throws(Throwable::class)
