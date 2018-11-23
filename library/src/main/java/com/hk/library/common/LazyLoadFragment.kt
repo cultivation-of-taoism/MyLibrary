@@ -90,5 +90,5 @@ abstract class LazyLoadFragment : BaseFragment() {
     /**
      * 当视图已经对用户不可见并且加载过数据，如果需要在切换到其他页面时停止加载数据，可以调用此方法
      */
-    protected fun stopLoad() {}
+    protected open fun stopLoad() {}
 }

@@ -41,8 +41,8 @@ open class RefreshHelper(var adapter: BaseQuickAdapter<out Any,out BaseViewHolde
         val finish: Boolean = data.size < PAGE_SIZE
         if (data.isNotEmpty()){
             adapter.addData(data)
-            adapter.notifyDataSetChanged()
         }
+        adapter.notifyDataSetChanged()
         if (finish)//判断是否加载完毕
             refreshLayout.setNoMoreData(true)
         else

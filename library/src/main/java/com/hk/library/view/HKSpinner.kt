@@ -72,7 +72,7 @@ class HKSpinner :AppCompatSpinner {
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         super.onLayout(changed, l, t, r, b)
-        getChildAt(0).run {
+        getChildAt(0)?.run {
             layout(0,top,this@HKSpinner.measuredWidth - computeArrowWidth(measuredHeight) -
                     arrowPadding.toInt() - spinnerAdapter.paddingRight, bottom)
         }
