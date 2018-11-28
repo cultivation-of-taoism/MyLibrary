@@ -1,5 +1,6 @@
 package com.hk.library
 
+import android.annotation.SuppressLint
 import android.widget.TextView
 import com.hk.library.presenter.Presenter
 import io.reactivex.Observable
@@ -12,9 +13,10 @@ import kotlin.properties.Delegates
  * Created by 23641 on 2017/6/15.
  */
 
+@SuppressLint("CheckResult")
 fun Presenter.verificationInterval(tvVerify:TextView, enableColor:Int,
-                                                            disEnableColor:Int){
-    Observable.interval(1, TimeUnit.SECONDS).take(60)
+                                   disEnableColor:Int){
+    Observable.interval(0, 1,TimeUnit.SECONDS).take(60)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ it ->

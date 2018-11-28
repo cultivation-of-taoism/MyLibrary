@@ -45,9 +45,7 @@ open class RetrofitSubscriber<T>(val iPresenter: IPresenter, private val task:In
 
     open fun onStart(s: Subscription) {
         if (!NetworkUtils.isConnected()) {
-            onError(ApiException(-1111, "似乎没网O"))
-            s.cancel()
-            return
+            throw ApiException(-1111, "似乎没网O")
         }
         iPresenter.controlProgress(true, task)
     }
