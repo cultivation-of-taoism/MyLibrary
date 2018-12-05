@@ -15,7 +15,6 @@ import android.os.Handler;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
@@ -31,7 +30,7 @@ public class AppDownloadManager {
     private DownloadChangeObserver mDownLoadChangeObserver;
     private DownloadReceiver mDownloadReceiver;
     private long mReqId = -1;
-    private OnUpdateListener mUpdateListener;
+    private OnDownloadListener mDownloadListener;
 
     public AppDownloadManager(Activity activity) {
         weakReference = new WeakReference<Activity>(activity);
@@ -40,8 +39,8 @@ public class AppDownloadManager {
         mDownloadReceiver = new DownloadReceiver();
     }
 
-    public void setUpdateListener(OnUpdateListener mUpdateListener) {
-        this.mUpdateListener = mUpdateListener;
+    public void setUpdateListener(OnDownloadListener mUpdateListener) {
+        this.mDownloadListener = mUpdateListener;
     }
 
     public void downloadApk(String apkUrl, String title, String desc) {
@@ -122,8 +121,8 @@ public class AppDownloadManager {
                 c.close();
             }
         }
-        if (mUpdateListener != null) {
-            mUpdateListener.update(bytesAndStatus[0], bytesAndStatus[1]);
+        if (mDownloadListener != null) {
+            mDownloadListener.update(bytesAndStatus[0], bytesAndStatus[1]);
         }
 
         Log.i(TAG, "下载进度：" + bytesAndStatus[0] + "/" + bytesAndStatus[1] + "");
@@ -220,7 +219,11 @@ public class AppDownloadManager {
             long completeDownLoadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
             int status = checkStatus(completeDownLoadId);
             ToastUtils.showShort(convertStatus(status));
-            if (status!=DownloadManager.STATUS_SUCCESSFUL) return;
+            if (status!=DownloadManager.STATUS_SUCCESSFUL){
+                if (mDownloadListener != null) mDownloadListener.onDownloadComplete(false);
+                return;
+            }
+            if (mDownloadListener != null) mDownloadListener.onDownloadComplete(true);
             boolean haveInstallPermission;
             // 兼容Android 8.0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -315,8 +318,14 @@ public class AppDownloadManager {
         return targetApkFile;
     }
 
-    public interface OnUpdateListener {
+    public interface OnDownloadListener {
+        /**
+         * 更新进度回调
+         * @param currentByte 已下载字节数 可能为-1
+         * @param totalByte 总字节数 可能为0
+         */
         void update(int currentByte, int totalByte);
+        void onDownloadComplete(boolean isSuccess);
     }
 
     public interface AndroidOInstallPermissionListener {
