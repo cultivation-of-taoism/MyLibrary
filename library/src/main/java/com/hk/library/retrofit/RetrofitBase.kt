@@ -1,8 +1,10 @@
 package com.hk.library.retrofit
 
+import android.arch.lifecycle.Lifecycle
 import com.blankj.utilcode.util.LogUtils
 import com.hk.library.presenter.IPresenter
 import com.trello.rxlifecycle2.android.lifecycle.kotlin.bindToLifecycle
+import com.trello.rxlifecycle2.android.lifecycle.kotlin.bindUntilEvent
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -64,7 +66,8 @@ fun <T> Flowable<T>.enqueue(subscribe: RetrofitSubscriber<T>): Disposable{
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext{ subscribe.checkResult(it) }
             .doOnCancel { LogUtils.v("取消网络请求订阅！") }
-            .bindToLifecycle(subscribe.iPresenter.lifecycleOwner)//hint RxLifeCycle不能在stop生命周期之后执行
+            .bindUntilEvent(subscribe.iPresenter.lifecycleOwner, Lifecycle.Event.ON_DESTROY)//hint
+            // RxLifeCycle不能在stop生命周期之后执行
             .subscribe(subscribe.lambdaSubscriber)
     return subscribe.lambdaSubscriber
 }

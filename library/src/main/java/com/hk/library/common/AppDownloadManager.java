@@ -25,6 +25,7 @@ import java.lang.ref.WeakReference;
 
 public class AppDownloadManager {
     public static final String TAG = "AppDownloadManager";
+    public static final int REQUEST_INSTALL = 9999;
     private WeakReference<Activity> weakReference;
     private DownloadManager mDownloadManager;
     private DownloadChangeObserver mDownLoadChangeObserver;
@@ -209,8 +210,12 @@ public class AppDownloadManager {
     private int checkStatus(){
         return checkStatus(mReqId);
     }
-
-
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (requestCode == REQUEST_INSTALL)
+            if (resultCode != Activity.RESULT_OK)
+                if (mDownloadListener!=null)
+                    mDownloadListener.onInstallCancel();
+    }
     class DownloadReceiver extends BroadcastReceiver {
 
         @Override
@@ -240,6 +245,7 @@ public class AppDownloadManager {
 
                         @Override
                         public void permissionFail() {
+                            if (mDownloadListener!=null)mDownloadListener.onInstallCancel();
                             ToastUtils.showShort("授权失败，无法安装应用");
                         }
                     };
@@ -291,7 +297,7 @@ public class AppDownloadManager {
             LogUtils.e("zhouwei", "下载完成了");
 
             intentInstall.setDataAndType(uri, "application/vnd.android.package-archive");
-            context.startActivity(intentInstall);
+            weakReference.get().startActivityForResult(intentInstall, REQUEST_INSTALL);
         }
     }
 
@@ -326,6 +332,7 @@ public class AppDownloadManager {
          */
         void update(int currentByte, int totalByte);
         void onDownloadComplete(boolean isSuccess);
+        void onInstallCancel();
     }
 
     public interface AndroidOInstallPermissionListener {
