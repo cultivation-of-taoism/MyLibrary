@@ -84,16 +84,17 @@ fun Activity.checkOverlayPermission(): Boolean{
 
 /**
  * 注意：在悬浮窗权限操作完成后的onActivityResult中需要如下操作
- *  if (requestCode == REQUEST_OVERLAY){
- *       Handler().postDelayed({
- *          if (checkOverlayPermission())
- *           loadDataWithPermissionCheck()
- *       else{
- *           LogUtils.v("悬浮窗权限被拒绝！")
- *           onPermissionDenied()
- *           }
- *       },500)
- * }
+ *
+ *     if (requestCode == REQUEST_OVERLAY){
+ *           Handler().postDelayed({
+ *              if (checkOverlayPermission())
+ *                  loadDataWithPermissionCheck()
+ *              else{
+ *                  LogUtils.v("悬浮窗权限被拒绝！")
+ *                  onPermissionDenied()
+ *              }
+ *          },500)
+ *     }
  *
  */
 fun Activity.requestOverlayPermission(onPermissionDenied:()->Unit){
