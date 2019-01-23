@@ -76,7 +76,6 @@ fun Activity.showLocServiceDialog() {
             }.show()
 }
 fun Activity.checkOverlayPermission(): Boolean{
-    requestOverlayPermission {  }
     return if (Build.VERSION.SDK_INT >= 23)
         Settings.canDrawOverlays(this)
     else true
