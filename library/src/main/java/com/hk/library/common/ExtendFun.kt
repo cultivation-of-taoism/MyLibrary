@@ -14,6 +14,7 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
+import kotlin.math.max
 
 /**
  * Created by Administrator on 2018/3/21.
@@ -62,6 +63,8 @@ inline fun <reified T> getConfig(key: String): T?{
     return if (json.isBlank()) null else Gson().fromJson(json,T::class.java)
 }
 
+
+
 /**
  * 设置tablayout下划线的宽度
  */
@@ -91,4 +94,22 @@ fun TabLayout.setIndicator(leftDip: Int, rightDip: Int){
         child?.layoutParams = params
         child?.invalidate()
     }
+
+}
+fun String.compareVersionName(to: String): Int{
+    val from = getNumberInVersionName(this)
+    val toN = getNumberInVersionName(to)
+    val size = max(from.size, toN.size)
+    for(i in 0 until size){
+        val fi = if (i < from.size) from[i] else 0
+        val ti = if (i < toN.size) toN[i] else 0
+        val diff = ti - fi
+        if (diff != 0) return diff
+    }
+    return 0
+}
+private fun getNumberInVersionName(versionName: String): List<Int>{
+    val regex = "\\.".toRegex()
+    val split = versionName.split(regex)
+    return split.map { it.toIntOrNull()?:0 }
 }

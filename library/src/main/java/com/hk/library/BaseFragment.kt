@@ -23,6 +23,8 @@ open class BaseFragment : Fragment(), IView, View.OnClickListener {
         get() = this
     protected var mView: View by Delegates.notNull()
     override val iiView: View by lazy { mView }
+    @set:JvmName("setBaseActivity")
+    @get:JvmName("getBaseActivity")
     protected var activity: BaseActivity by Delegates.notNull()
     override val mContext: Context
         get() = if (context==null)activity

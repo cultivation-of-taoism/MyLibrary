@@ -99,8 +99,12 @@ public class AppDownloadManager {
      * 对应{@link Activity#onPause()} ()}
      */
     public void onPause() {
-        weakReference.get().getContentResolver().unregisterContentObserver(mDownLoadChangeObserver);
-        weakReference.get().unregisterReceiver(mDownloadReceiver);
+        try{
+            weakReference.get().getContentResolver().unregisterContentObserver(mDownLoadChangeObserver);
+            weakReference.get().unregisterReceiver(mDownloadReceiver);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void updateView() {
